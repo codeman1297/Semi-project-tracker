@@ -1,0 +1,27 @@
+# CANONICAL project records. Hand-edited; every change is reviewed as a git diff.
+#
+# Format
+# ------
+# `refs` defines named citations. Sourced fields cite one with `src:`:
+#
+#   refs:
+#     pib-2024-02-29:
+#       source_url: https://pib.gov.in/PressReleasePage.aspx?PRID=XXXXXXX
+#       source_name: PIB
+#       source_type: primary_govt      # primary_govt | primary_company | media | inferred
+#       retrieved_at: 2026-09-08T00:00:00Z
+#       confidence: confirmed          # confirmed | reported | unconfirmed
+#
+#   projects:
+#     - id: micron-sanand-atmp
+#       investment_inr_cr: {value: 22516, src: pib-2024-02-29}
+#
+# A project may define its own `refs:` block, which shadows the global one.
+# A field with no source is left out entirely -- it renders as an em dash.
+# Never edit a value in place: move the old one into `superseded` with a reason.
+#
+# Seeded in build step 2, one project at a time, against primary sources.
+
+refs: {}
+
+projects: []

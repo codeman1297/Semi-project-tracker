@@ -164,8 +164,8 @@ venv.bak/
 # Rope project settings
 .ropeproject
 
-# mkdocs documentation
-/site
+# mkdocs documentation (we are not mkdocs; our build output is handled in the
+# ism-tracker block at the end of this file, which needs site/.nojekyll tracked)
 
 # mypy
 .mypy_cache/
@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- ism-tracker ---
+.env
+.cache/
+ism.db
+out/
+site/*
+!site/.nojekyll

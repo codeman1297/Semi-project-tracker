@@ -1,0 +1,4 @@
+# Company metadata and parent / JV relationships.
+# `ir_url` is the press or investor-relations page the company fetcher polls.
+
+companies: []

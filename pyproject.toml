@@ -1,0 +1,45 @@
+[project]
+name = "ism-tracker"
+version = "0.1.0"
+description = "Public tracker of semiconductor manufacturing projects approved under India's Semiconductor Mission (ISM) and adjacent schemes."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "ISM Tracker" }]
+
+# Dependency policy: every dependency needs a one-line justification.
+# If a stdlib module can do the job, use the stdlib module.
+dependencies = [
+    "pydantic>=2.7",      # the schema contract itself; nothing else gives us typed, validated records for free
+    "PyYAML>=6.0",        # canonical data lives in hand-editable YAML
+    "typer>=0.12",        # CLI with typed args; thin wrapper over click, no runtime weight worth arguing about
+    "python-dotenv>=1.0", # .env loading, per the "no secrets in the repo" constraint
+    "Jinja2>=3.1",        # static site templating (step 3); no npm, no build toolchain
+    "httpx>=0.27",        # ingestion fetcher with ETag/Last-Modified support and sane timeouts (step 4)
+]
+
+[project.optional-dependencies]
+# Optional so the core pipeline never needs an LLM to run (hard constraint §1).
+llm = [
+    "anthropic>=0.34",    # only imported by extract/llm.py, only when --llm is passed
+]
+
+[project.scripts]
+ism-tracker = "ism_tracker.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ism_tracker"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["error::DeprecationWarning:ism_tracker.*"]

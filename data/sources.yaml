@@ -1,0 +1,13 @@
+# Source registry: everything the ingest pipeline polls.
+#
+#   - id: pib-meity
+#     name: PIB (Ministry of Electronics & IT)
+#     url: https://pib.gov.in/allRel.aspx
+#     type: pib                # pib | ism_site | rss | company | state_govt | html
+#     source_type: primary_govt
+#     poll_frequency: daily
+#     params: {ministry: "Ministry of Electronics & Information Technology"}
+#
+# Seeded in build step 4 alongside the fetchers that consume it.
+
+sources: []

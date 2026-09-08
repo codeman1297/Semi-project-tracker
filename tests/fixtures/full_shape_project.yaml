@@ -1,0 +1,51 @@
+refs:
+  pib1:
+    source_url: https://pib.gov.in/PressReleasePage.aspx?PRID=2010650
+    source_name: PIB
+    source_type: primary_govt
+    retrieved_at: 2026-09-08T00:00:00Z
+    published_at: 2024-02-29
+    confidence: confirmed
+    quote_hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  news1:
+    source_url: https://example.com/news/story
+    source_name: Business Standard
+    source_type: media
+    retrieved_at: 2026-09-08T00:00:00Z
+    confidence: reported
+
+projects:
+  - id: shape-test-fab
+    name: Shape Test Fab
+    company: Test Corp
+    parent_company: {value: Test Holdings, src: pib1}
+    jv_partners: {value: [PSMC, Someone Else], src: pib1}
+    scheme: {value: ISM_1.0, src: pib1}
+    facility_type: {value: logic_fab, src: pib1}
+    location: {city: Dholera, district: Ahmedabad, state: Gujarat, cluster: Dholera SIR, lat: 22.24, lon: 72.18}
+    investment_inr_cr:
+      value: 91000
+      src: pib1
+      superseded:
+        - value: 90000
+          src: news1
+          superseded_on: 2026-01-15
+          reason: "PIB stated a revised figure"
+    capacity: {value: {value: 50000, unit: wafer starts per month, basis: at full capacity}, src: pib1}
+    technology_node: {value: 28nm and above, src: pib1}
+    products: {value: [logic, power management], src: news1}
+    end_markets: {value: [automotive, telecom], src: news1}
+    status: {value: under_construction, src: pib1}
+    status_history:
+      - {date: 2024-02-29, to_status: cabinet_approved, src: pib1}
+      - {date: 2024-03-13, from_status: cabinet_approved, to_status: groundbroken, src: pib1}
+      - {date: 2025-01-10, from_status: groundbroken, to_status: under_construction, src: news1}
+    key_dates:
+      approval: {value: 2024-02-29, src: pib1}
+      groundbreaking: {value: 2024-03-13, src: pib1}
+      target_first_output: {value: 2026-12-01, src: news1}
+    employment_direct: {value: 20000, src: pib1}
+    employment_indirect: {value: 60000, src: news1}
+    last_verified_at: 2026-09-05
+    verification_owner: operator
+    notes_md: "Shape test only."
